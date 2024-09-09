@@ -1,0 +1,1 @@
+extension JokeModelExtension on DateTime {}
