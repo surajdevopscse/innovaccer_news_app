@@ -1,25 +1,33 @@
 import 'dart:convert';
-
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:innovaccer_news_app/features/news/data/models/news_model.dart';
 
-class LocalDataSource {
-  final CacheManager cacheManager = DefaultCacheManager();
+class NewsLocalDataSource {
+  final SharedPreferences sharedPreferences;
 
-  Future<NewsModel?> getCachedNews() async {
-    var file = await cacheManager.getFileFromCache('news_cache');
-    if (file != null) {
-      var cachedData = await file.file.readAsString();
-      return jsonDecode(cachedData);
-    }
-    return null;
+  NewsLocalDataSource(this.sharedPreferences);
+
+  static const String cachedNewsKey = 'CACHED_NEWS';
+
+  Future<void> cacheNews(List<Article> articles) async {
+    final List<String> jsonArticles =
+        articles.map((article) => json.encode(article.toJson())).toList();
+    await sharedPreferences.setStringList(cachedNewsKey, jsonArticles);
   }
 
-  Future<void> cacheNews(List<NewsModel> articles) async {
-    await cacheManager.putFile(
-      'news_cache',
-      utf8.encode(jsonEncode(articles.map((a) => a.toJson()).toList())),
-      fileExtension: 'json',
-    );
+  Future<List<Article>?> getCachedNews() async {
+    final List<String>? jsonArticles =
+        sharedPreferences.getStringList(cachedNewsKey);
+    if (jsonArticles != null && jsonArticles.isNotEmpty) {
+      return jsonArticles
+          .map((jsonString) => Article.fromJson(json.decode(jsonString)))
+          .toList();
+    } else {
+      return null;
+    }
+  }
+
+  Future<void> clearCahes() async {
+    await sharedPreferences.remove(cachedNewsKey);
   }
 }

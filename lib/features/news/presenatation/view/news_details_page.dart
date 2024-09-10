@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:innovaccer_news_app/core/common_widget/offline_snackbar.dart';
 import 'package:innovaccer_news_app/core/extensions/date_extention.dart';
 import 'package:innovaccer_news_app/core/utils/size_config.dart';
 import 'package:innovaccer_news_app/features/news/data/models/news_model.dart';
@@ -116,8 +117,13 @@ class NewsDetailsPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               child: ElevatedButton(
                 onPressed: () {
-                  Provider.of<NewsProvider>(context, listen: false)
-                      .launchInWebView(Uri.parse(news.url ?? ''));
+                  if (Provider.of<NewsProvider>(context, listen: false)
+                      .noInternet) {
+                    showOfflineSnackbar(context);
+                  } else {
+                    Provider.of<NewsProvider>(context, listen: false)
+                        .launchInWebView(Uri.parse(news.url ?? ''));
+                  }
                 },
                 child: const Text('Read Full Article'),
               ),

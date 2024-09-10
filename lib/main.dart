@@ -3,6 +3,7 @@ import 'package:innovaccer_news_app/config/theme/app_theme.dart';
 import 'package:innovaccer_news_app/config/theme/theme_notifier.dart';
 import 'package:innovaccer_news_app/core/api/api_services.dart';
 import 'package:innovaccer_news_app/core/constants/constants.dart';
+import 'package:innovaccer_news_app/core/resources/network_info.dart';
 import 'package:innovaccer_news_app/core/utils/size_config.dart';
 import 'package:innovaccer_news_app/features/news/data/data_sources/local/news_local_datasources.dart';
 import 'package:innovaccer_news_app/features/news/data/data_sources/remote/news_remote_datasource.dart';
@@ -14,8 +15,11 @@ import 'package:innovaccer_news_app/features/spalsh/domain/use_cases/splash_use_
 import 'package:innovaccer_news_app/features/spalsh/presentation/change_notifier/splash_provider.dart';
 import 'package:innovaccer_news_app/features/spalsh/presentation/view/splash_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final sharedPreferences = await SharedPreferences.getInstance();
   runApp(
     MultiProvider(
       providers: [
@@ -32,7 +36,8 @@ void main() {
                 newsRemoteDataSource: NewsRemoteDataSourceImpl(
                   services: ApiService(),
                 ),
-                newsLocalDataSource: LocalDataSource(),
+                newsLocalDataSource: NewsLocalDataSource(sharedPreferences),
+                networkInfo: NetworkInfo(),
               ),
             ),
           ),

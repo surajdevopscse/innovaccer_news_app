@@ -11,6 +11,7 @@ class NewsProvider with ChangeNotifier {
   bool isLoading = false;
   String errorMessage = '';
   String query = 'elon';
+  bool noInternet = false;
 
   NewsProvider(this.fetchNewsUseCase) {
     fetchNews();
@@ -33,6 +34,11 @@ class NewsProvider with ChangeNotifier {
       );
       if (result is DataSuccess) {
         newsList = result.data!;
+        if (newsList?.message == 'no internet') {
+          noInternet = true;
+        } else {
+          noInternet = false;
+        }
       }
     } catch (e) {
       errorMessage = 'Failed to load news.';

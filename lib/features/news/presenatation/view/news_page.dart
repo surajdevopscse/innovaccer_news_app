@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:innovaccer_news_app/config/theme/theme_notifier.dart';
+import 'package:innovaccer_news_app/core/common_widget/offline_snackbar.dart';
 import 'package:innovaccer_news_app/core/common_widget/search_bar.dart';
 import 'package:innovaccer_news_app/core/constants/constants.dart';
 import 'package:innovaccer_news_app/features/news/presenatation/provider/news_provider.dart';
@@ -44,6 +45,9 @@ class NewsScreen extends StatelessWidget {
                     onSearch: (query) {
                       provider.query = query;
                       provider.fetchNews();
+                      if (provider.noInternet) {
+                        showOfflineSnackbar(context);
+                      }
                     },
                   ),
                 ),
