@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class AppTheme {
-  // Light Themes
+  // Light Theme
   static ThemeData get lightTheme {
     return ThemeData(
       brightness: Brightness.light,
@@ -12,12 +12,22 @@ abstract class AppTheme {
       ),
       cardTheme: CardTheme(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        elevation: 4,
+        elevation: 2,
+      ),
+      textTheme: const TextTheme(
+        headlineLarge: TextStyle(
+            color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),
+        headlineMedium: TextStyle(
+            color: Colors.black87, fontSize: 20, fontWeight: FontWeight.bold),
+        headlineSmall: TextStyle(color: Colors.black54, fontSize: 16),
+      ),
+      iconTheme: const IconThemeData(
+        color: Colors.blue,
       ),
     );
   }
 
-  // Dark Themes
+  // Dark Theme
   static ThemeData get darkTheme {
     return ThemeData(
       brightness: Brightness.dark,
@@ -30,6 +40,16 @@ abstract class AppTheme {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         elevation: 4,
         color: Colors.grey[800],
+      ),
+      textTheme: const TextTheme(
+        headlineLarge: TextStyle(
+            color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+        headlineMedium: TextStyle(
+            color: Colors.white70, fontSize: 20, fontWeight: FontWeight.bold),
+        headlineSmall: TextStyle(color: Colors.white70, fontSize: 16),
+      ),
+      iconTheme: const IconThemeData(
+        color: Colors.white,
       ),
     );
   }
