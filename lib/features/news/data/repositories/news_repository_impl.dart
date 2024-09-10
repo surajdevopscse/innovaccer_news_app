@@ -21,7 +21,7 @@ class NewsRepositoryImpl implements NewsRepository {
   @override
   Future<DataState<NewsEntity>> fetchNews({required NewsParams params}) async {
     try {
-      if (!await networkInfo.isConnected) {
+      if (await networkInfo.isConnected) {
         final news = await _fetchNewsAndAddToLocal(params: params);
         return DataSuccess(data: news);
       } else {
