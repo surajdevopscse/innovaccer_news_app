@@ -22,6 +22,7 @@ This Flutter application showcases a News Feed using the Newsorg API. The app fe
 - **Read Full Article**: Opens the full article in a WebView.
 - **Pull to Refresh**: Pull to refresh for reload data.
 - **Internet Handling**: Manages internet connectivity issues.
+- **Empty State**: Whenever you are to seach something and not available with that query you will see empty state.
 - **Searching**: You can search news when you are connected with internet.
 - **Caching**: Offline caching using SharedPreferences.
 - **Theme Management**: Supports light and dark themes.
@@ -54,6 +55,10 @@ Ensure you are using Flutter 3.24.2
 
 **Internet Handling**:
 ![Simulator Screenshot - iPhone 15 Pro - 2024-09-10 at 14 30 08](https://github.com/user-attachments/assets/d05d760a-dd0d-4f86-a23a-3d64cab93764)
+
+**Empty State**:
+![Simulator Screenshot - iPhone 15 Pro - 2024-09-10 at 15 42 40](https://github.com/user-attachments/assets/333a8793-d243-417e-a857-8970c6a04e79)
+
 
 **Searching**:
 ![Simulator Screenshot - iPhone 15 Pro - 2024-09-10 at 14 29 23](https://github.com/user-attachments/assets/e9d80f69-cd97-48c3-81d7-00a4846eed52)
