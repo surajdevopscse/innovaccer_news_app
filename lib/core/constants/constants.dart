@@ -11,4 +11,5 @@ class AppConstants {
   ///App Image Path
   static const String SEARCHSVG = 'assets/svg/search.svg';
   static const String SPLASHIMAGESVG = 'assets/svg/splash_image.svg';
+  static const String NODATASVG = 'assets/svg/no_data.svg';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:innovaccer_news_app/core/common_widget/empty_screen.dart';
 import 'package:innovaccer_news_app/features/news/presenatation/provider/news_provider.dart';
 import 'package:innovaccer_news_app/features/news/presenatation/widgets/news_card_widget.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +32,9 @@ class TopHeadlines extends StatelessWidget {
           );
         } else if (provider.newsList?.articles == null ||
             provider.newsList!.articles!.isEmpty) {
-          return const Center(child: Text('No news articles available.'));
+          return const EmptyScreen(
+            message: 'No news articles available',
+          );
         } else {
           return ListView.builder(
             itemCount: provider.newsList?.articles!.length,
