@@ -15,33 +15,43 @@ dependencies:
 
   cupertino_icons: ^1.0.8
 
-  # A powerful HTTP networking package for Dart/Flutter, supports Global configuration, 
-  # Interceptors, FormData, Request cancellation, File uploading/downloading, Timeout, Custom adapters,
-  # Transformers, etc.
+  # A powerful HTTP networking package with various features for Dart/Flutter
   dio: ^5.7.0
 
-  #
+  # State management solution for Flutter
   provider: ^6.1.2
 
 
-  #
+  # Manages caching of files and images
   flutter_cache_manager: ^3.4.1
 
 
-  #
+  # Stores persistent key-value pairs local storage
   shared_preferences: ^2.3.2
 
 
-  # 
+  # Provides access to Google's fonts
   google_fonts: ^6.2.1
 
-
+  # Simplifies comparison of objects
   equatable:
+    
+  #  Internationalization and formatting utilities
   intl: ^0.19.0
+
+
+  # Caches and displays images from the network
   cached_network_image: ^3.4.1
+
+
+  # Renders SVG images in Flutter
   flutter_svg: 
+    
+  # Checks network connectivity
   connectivity_plus: ^6.0.5
 
+
+  # Launches URLs in the browser or other apps
   url_launcher: ^6.3.0
 
     
